@@ -1,33 +1,39 @@
 {
   "format": 1,
   "restore": {
-    "/home/bc/baco2/API/API.csproj": {}
+    "C:\\Users\\BC\\Desktop\\baco2\\API\\API.csproj": {}
   },
   "projects": {
-    "/home/bc/baco2/API/API.csproj": {
+    "C:\\Users\\BC\\Desktop\\baco2\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/bc/baco2/API/API.csproj",
+        "projectUniqueName": "C:\\Users\\BC\\Desktop\\baco2\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "/home/bc/baco2/API/API.csproj",
-        "packagesPath": "/home/bc/.nuget/packages/",
-        "outputPath": "/home/bc/baco2/API/obj/",
+        "projectPath": "C:\\Users\\BC\\Desktop\\baco2\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\BC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\BC\\Desktop\\baco2\\API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/bc/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\BC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/bc/baco2/Infrastructure/Infrastructure.csproj": {
-                "projectPath": "/home/bc/baco2/Infrastructure/Infrastructure.csproj"
+              "C:\\Users\\BC\\Desktop\\baco2\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\BC\\Desktop\\baco2\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -75,26 +81,32 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/bc/baco2/Core/Core.csproj": {
+    "C:\\Users\\BC\\Desktop\\baco2\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/bc/baco2/Core/Core.csproj",
+        "projectUniqueName": "C:\\Users\\BC\\Desktop\\baco2\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "/home/bc/baco2/Core/Core.csproj",
-        "packagesPath": "/home/bc/.nuget/packages/",
-        "outputPath": "/home/bc/baco2/Core/obj/",
+        "projectPath": "C:\\Users\\BC\\Desktop\\baco2\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\BC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\BC\\Desktop\\baco2\\Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/bc/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\BC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -127,34 +139,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/bc/baco2/Infrastructure/Infrastructure.csproj": {
+    "C:\\Users\\BC\\Desktop\\baco2\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/bc/baco2/Infrastructure/Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\BC\\Desktop\\baco2\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "/home/bc/baco2/Infrastructure/Infrastructure.csproj",
-        "packagesPath": "/home/bc/.nuget/packages/",
-        "outputPath": "/home/bc/baco2/Infrastructure/obj/",
+        "projectPath": "C:\\Users\\BC\\Desktop\\baco2\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\BC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\BC\\Desktop\\baco2\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/bc/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\BC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/bc/baco2/Core/Core.csproj": {
-                "projectPath": "/home/bc/baco2/Core/Core.csproj"
+              "C:\\Users\\BC\\Desktop\\baco2\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\BC\\Desktop\\baco2\\Core\\Core.csproj"
               }
             }
           }
@@ -172,6 +190,10 @@
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[6.0.5, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.6, )"
             }
           },
           "imports": [
@@ -189,7 +211,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

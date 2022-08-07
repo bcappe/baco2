@@ -1,11 +1,12 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace Infrastructure.Data.Migrations
 {
-    public partial class InitDBBaco : Migration
+    public partial class PostGresinitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,9 +14,9 @@ namespace Infrastructure.Data.Migrations
                 name: "Companies",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -26,14 +27,14 @@ namespace Infrastructure.Data.Migrations
                 name: "WorkDaySchedules",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
                     CheckIn = table.Column<DateTime>(type: "date", nullable: false),
                     CheckOut = table.Column<DateTime>(type: "date", nullable: false),
                     LunchTimeIn = table.Column<DateTime>(type: "date", nullable: false),
                     LunchTimeOut = table.Column<DateTime>(type: "date", nullable: false),
-                    WorkDayDuration = table.Column<float>(type: "REAL", nullable: false)
+                    WorkDayDuration = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,17 +45,17 @@ namespace Infrastructure.Data.Migrations
                 name: "Employees",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    JobTitle = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
-                    Department = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
-                    JobContractType = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    StartedIn = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    PictureUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    FingerPrintUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    RfidCode = table.Column<string>(type: "TEXT", maxLength: 30, nullable: true),
-                    WorkDayScheduleId = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    JobTitle = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Department = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    JobContractType = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    StartedIn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    PictureUrl = table.Column<string>(type: "text", nullable: true),
+                    FingerPrintUrl = table.Column<string>(type: "text", nullable: true),
+                    RfidCode = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: true),
+                    WorkDayScheduleId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -71,17 +72,17 @@ namespace Infrastructure.Data.Migrations
                 name: "WorkDays",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Date = table.Column<DateTime>(type: "date", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    EmployeeId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ExtraHours = table.Column<float>(type: "REAL", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    EmployeeId = table.Column<int>(type: "integer", nullable: false),
+                    ExtraHours = table.Column<float>(type: "real", nullable: true),
                     CheckIn = table.Column<DateTime>(type: "date", nullable: true),
                     CheckOut = table.Column<DateTime>(type: "date", nullable: true),
                     LunchTimeIn = table.Column<DateTime>(type: "date", nullable: true),
                     LunchTimeOut = table.Column<DateTime>(type: "date", nullable: true),
-                    WorkDayDuration = table.Column<float>(type: "REAL", nullable: false)
+                    WorkDayDuration = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
