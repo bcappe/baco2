@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,7 +11,6 @@ namespace Infrastructure.Data
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         private readonly StoreContext _context;
-
         public GenericRepository(StoreContext context)
         {
             _context = context;
@@ -50,7 +48,9 @@ namespace Infrastructure.Data
 
         public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec)
         {
-            return await ApplySpecification(spec).ToListAsync();
+            var query = ApplySpecification(spec);
+
+            return await query.ToListAsync();
         }
 
         public void Update(T entity)
