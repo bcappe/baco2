@@ -1,5 +1,5 @@
 //Classe contendo os parametros da especificacao Employee
-
+// TODO implementar uma spec apenas para o
 namespace Core.Specifications
 {
     public class EmployeeSpecParams
@@ -13,6 +13,13 @@ namespace Core.Specifications
         //     get => _pageSize;
         //     set => _pageSize = (value > MaxPageSize) ? MaxPageSize : value;
         // }
+        public EmployeeSpecParams()
+        {
+        }
+        public EmployeeSpecParams(string rfid)
+        {
+            Rfid = rfid;
+        }
         public int? WorkDayScheduleId { get; set; }
 
         public string? Rfid { get; set; }
