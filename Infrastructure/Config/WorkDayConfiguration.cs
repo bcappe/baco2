@@ -10,10 +10,10 @@ namespace Infrastructure.Config
             builder.Property(p => p.Id).IsRequired();
             builder.Property(p => p.Date).IsRequired().HasColumnType("date");
             builder.Property(p => p.EmployeeId).IsRequired();
-            builder.Property(p => p.CheckIn).HasColumnType("date");
-            builder.Property(p => p.CheckOut).HasColumnType("date");
-            builder.Property(p => p.LunchTimeIn).HasColumnType("date");
-            builder.Property(p => p.LunchTimeOut).HasColumnType("date");
+            builder.Property(p => p.CheckIn);
+            builder.Property(p => p.CheckOut);
+            builder.Property(p => p.LunchTimeIn);
+            builder.Property(p => p.LunchTimeOut);
         }
     }
 
