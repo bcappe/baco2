@@ -14,6 +14,9 @@ namespace Core.Specifications
         //     set => _pageSize = (value > MaxPageSize) ? MaxPageSize : value;
         // }
         public int? WorkDayScheduleId { get; set; }
+
+        public string? Rfid { get; set; }
+
         public string? Sort { get; set; }
         
         private string? _search;
@@ -22,6 +25,6 @@ namespace Core.Specifications
             get => _search;
             set => _search = value.ToLower();
         }
-        public string? TypeOfSearch { get; set; }
+        // public string? TypeOfSearch { get; set; }
     }
 }
