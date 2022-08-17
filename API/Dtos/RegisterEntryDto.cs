@@ -6,7 +6,7 @@ namespace API.Dtos
     public class RegisterEntryDto
     {
         [Required]
-        public int Rfid { get; set; } 
+        public string Rfid { get; set; } 
         [Required]
         public DateTime TimeStamp { get; set; } 
         [Required]
