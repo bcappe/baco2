@@ -8,7 +8,7 @@ namespace Core.Entities
         public DateTime? LunchTimeIn{ get; set; }
         public DateTime? LunchTimeOut{ get; set; }
 
-        public float WorkDayDuration{ get; set; }
+        public float? WorkDayDuration{ get; set; }
 
     }
 }
