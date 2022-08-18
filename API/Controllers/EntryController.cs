@@ -46,7 +46,22 @@ namespace API.Controllers
             }
             else if(!createEntry.IsIn)
             {
-                //workDay.LunchTimeIn; check if is lunch time
+                if(!workDay.LunchTimeOut.HasValue)
+                {
+                    workDay.LunchTimeOut=createEntry.TimeStamp;
+                    _unitOfWork.Repository<WorkDay>().Update(workDay);    
+                }
+                else
+                {
+                    workDay.CheckOut=createEntry.TimeStamp;
+                    _unitOfWork.Repository<WorkDay>().Update(workDay);    
+                }
+            }
+            else
+            {
+                workDay.LunchTimeIn=createEntry.TimeStamp;
+                _unitOfWork.Repository<WorkDay>().Update(workDay);
+                
             }
             var result = await _unitOfWork.Complete();
 
