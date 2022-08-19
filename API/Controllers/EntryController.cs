@@ -8,14 +8,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    public class EntryController : BaseApiController
+    public class WorkDayController : BaseApiController
     {
 
         private readonly IGenericRepository<WorkDay> _workDayRepo;
         private readonly IGenericRepository<Employee> _employeeRepo;
         private readonly IUnitOfWork _unitOfWork;
 
-        public EntryController(
+        public WorkDayController(
                                 IUnitOfWork unitOfWork,
                                 IGenericRepository<WorkDay> workDayRepo,
                                 IGenericRepository<Employee> employeeRepo
@@ -28,7 +28,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<WorkDay>> CreateProduct(RegisterEntryDto createEntry)
+        public async Task<ActionResult<WorkDay>> AddEntry(RegisterEntryDto createEntry)
         {
             var parms = new EmployeeSpecParams();
             parms.Rfid=createEntry.Rfid;
