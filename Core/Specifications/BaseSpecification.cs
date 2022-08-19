@@ -1,4 +1,3 @@
-
 using System.Linq.Expressions;
 
 
@@ -15,7 +14,7 @@ namespace Core.Specifications
             Criteria = criteria;
         }
 
-        public Expression<Func<T, bool>> Criteria { get; private set; }
+        public Expression<Func<T, bool>> Criteria { get;set; }
 
         public List<Expression<Func<T, object>>> Includes { get; } = new List<Expression<Func<T, object>>>();
 

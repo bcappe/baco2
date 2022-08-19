@@ -6,9 +6,10 @@ namespace Core.Specifications
 {
     public class DateWorkDaySpecification : BaseSpecification<WorkDay>
     {
-        public DateWorkDaySpecification(DateTime ?date)
+        public DateWorkDaySpecification(DateTime ?date=null, int? employeeId=null)
         : base(x => 
-            (!date.HasValue || x.Date == date.Value.Date))
+            (!date.HasValue || x.Date == date.Value.Date) &&
+            (!employeeId.HasValue || x.EmployeeId == employeeId)) 
         {
 
             

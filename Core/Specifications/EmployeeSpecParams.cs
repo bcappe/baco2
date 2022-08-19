@@ -16,10 +16,6 @@ namespace Core.Specifications
         public EmployeeSpecParams()
         {
         }
-        public EmployeeSpecParams(string rfid)
-        {
-            Rfid = rfid;
-        }
         public int? WorkDayScheduleId { get; set; }
 
         public string? Rfid { get; set; }
