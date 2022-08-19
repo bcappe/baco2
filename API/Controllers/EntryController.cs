@@ -30,7 +30,8 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<WorkDay>> CreateProduct(RegisterEntryDto createEntry)
         {
-            var parms = new EmployeeSpecParams(createEntry.Rfid);
+            var parms = new EmployeeSpecParams();
+            parms.Rfid=createEntry.Rfid;
             var specEmplo = new EmployeesWithWorkScheduleSpecification(parms);
             var employee = await _employeeRepo.GetEntityWithSpec(specEmplo);
             if(employee is null)
@@ -41,7 +42,10 @@ namespace API.Controllers
 
             if(workDay is null)
             {
-                workDay=new WorkDay(employee.Id,createEntry.TimeStamp);
+                workDay=new WorkDay();
+                workDay.EmployeeId=employee.Id;
+                workDay.Date=createEntry.TimeStamp.Date;
+                workDay.CheckIn=createEntry.TimeStamp;
                 _unitOfWork.Repository<WorkDay>().Add(workDay);
             }
             else if(!createEntry.IsIn)
