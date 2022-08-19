@@ -37,7 +37,7 @@ namespace API.Controllers
             if(employee is null)
                 return BadRequest();
             
-            var specDay = new DateWorkDaySpecification(createEntry.TimeStamp.Date);
+            var specDay = new DateWorkDaySpecification(date: createEntry.TimeStamp.Date,employeeId: employee.Id);
             var workDay = await _workDayRepo.GetEntityWithSpec(specDay);
 
             if(workDay is null)
