@@ -82,7 +82,7 @@ namespace Infrastructure.Data.Migrations
                     CheckOut = table.Column<DateTime>(type: "date", nullable: true),
                     LunchTimeIn = table.Column<DateTime>(type: "date", nullable: true),
                     LunchTimeOut = table.Column<DateTime>(type: "date", nullable: true),
-                    WorkDayDuration = table.Column<float>(type: "real", nullable: false)
+                    WorkDayDuration = table.Column<float>(type: "real", nullable: true)
                 },
                 constraints: table =>
                 {

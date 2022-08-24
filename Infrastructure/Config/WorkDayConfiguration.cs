@@ -14,6 +14,7 @@ namespace Infrastructure.Config
             builder.Property(p => p.CheckOut);
             builder.Property(p => p.LunchTimeIn);
             builder.Property(p => p.LunchTimeOut);
+            builder.Property(p=>p.WorkDayDuration);
         }
     }
 

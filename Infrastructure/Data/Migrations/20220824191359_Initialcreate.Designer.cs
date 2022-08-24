@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20220807143503_PostGres initial")]
-    partial class PostGresinitial
+    [Migration("20220824191359_Initialcreate")]
+    partial class Initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -77,7 +77,7 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("character varying(30)");
 
                     b.Property<DateTime>("StartedIn")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("date");
 
                     b.Property<int>("WorkDayScheduleId")
                         .HasColumnType("integer");
@@ -98,10 +98,10 @@ namespace Infrastructure.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime?>("CheckIn")
-                        .HasColumnType("date");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("CheckOut")
-                        .HasColumnType("date");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("date");
@@ -116,10 +116,10 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("real");
 
                     b.Property<DateTime?>("LunchTimeIn")
-                        .HasColumnType("date");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("LunchTimeOut")
-                        .HasColumnType("date");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<float?>("WorkDayDuration")
                         .HasColumnType("real");
@@ -141,19 +141,19 @@ namespace Infrastructure.Data.Migrations
 
                     b.Property<DateTime?>("CheckIn")
                         .IsRequired()
-                        .HasColumnType("date");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("CheckOut")
                         .IsRequired()
-                        .HasColumnType("date");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("LunchTimeIn")
                         .IsRequired()
-                        .HasColumnType("date");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("LunchTimeOut")
                         .IsRequired()
-                        .HasColumnType("date");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
