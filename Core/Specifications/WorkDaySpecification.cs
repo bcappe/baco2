@@ -4,12 +4,12 @@ using Core.Entities;
 
 namespace Core.Specifications
 {
-    public class DateWorkDaySpecification : BaseSpecification<WorkDay>
+    public class WorkDaySpecification : BaseSpecification<WorkDay>
     {
-        public DateWorkDaySpecification(DateTime ?date=null, int? employeeId=null)
+        public WorkDaySpecification(WorkDaySpecParams parms)
         : base(x => 
-            (!date.HasValue || x.Date == date.Value.Date) &&
-            (!employeeId.HasValue || x.EmployeeId == employeeId)) 
+            (!parms.Date.HasValue || x.Date == parms.Date) &&
+            (!parms.EmployeeID.HasValue || x.EmployeeId == parms.EmployeeID)) 
         {
 
             

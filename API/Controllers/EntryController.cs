@@ -30,14 +30,17 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<WorkDay>> AddEntry(RegisterEntryDto createEntry)
         {
-            var parms = new EmployeeSpecParams();
-            parms.Rfid=createEntry.Rfid;
-            var specEmplo = new EmployeesWithWorkScheduleSpecification(parms);
+            var parmsEmployee = new EmployeeSpecParams();
+            parmsEmployee.Rfid=createEntry.Rfid;
+            var specEmplo = new EmployeesWithWorkScheduleSpecification(parmsEmployee);
             var employee = await _employeeRepo.GetEntityWithSpec(specEmplo);
             if(employee is null)
                 return BadRequest();
-            
-            var specDay = new DateWorkDaySpecification(date: createEntry.TimeStamp.Date,employeeId: employee.Id);
+            var parmsWorkDay= new WorkDaySpecParams();
+            parmsWorkDay.Date = createEntry.TimeStamp.Date;
+            parmsWorkDay.EmployeeID = employee.Id;
+
+            var specDay = new WorkDaySpecification(parmsWorkDay);
             var workDay = await _workDayRepo.GetEntityWithSpec(specDay);
 
             if(workDay is null)
@@ -74,5 +77,54 @@ namespace API.Controllers
             return Ok(workDay);
         }
 
+        [HttpGet]
+        public async Task<ActionResult<WorkDay>> GetWorkDays(
+           [FromQuery] WorkDaySpecParams workDayParams)
+        {
+            var spec = new WorkDaySpecification(workDayParams);
+            var workDays = await _unitOfWork.Repository<WorkDay>().ListAsync(spec);
+            return Ok(workDays);
+        }
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<WorkDay>> GetWorkDay(int id)
+        {
+            var workDay = await _unitOfWork.Repository<WorkDay>().GetByIdAsync(id);
+            if (workDay == null) return NotFound(new ApiResponse(404));
+            return (workDay);
+        }
+        
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteWorkDay(int id)
+        {
+            var workDay = await _unitOfWork.Repository<WorkDay>().GetByIdAsync(id);
+            
+            _unitOfWork.Repository<WorkDay>().Delete(workDay);
+
+            var result = await _unitOfWork.Complete();
+            
+            if (result <= 0) return BadRequest(new ApiResponse(400, "Problem deleting workDay"));
+
+            return Ok();
+        }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<WorkDay>> UpdateProduct(int id, WorkDayDto workDayDto)
+        {
+            var workDay = await _unitOfWork.Repository<WorkDay>().GetByIdAsync(id);
+            //TODO: nice to have--> automapper
+            workDay.CheckIn=workDayDto.CheckIn;
+            workDay.CheckOut=workDayDto.CheckOut;
+            workDay.LunchTimeIn=workDayDto.LunchTimeIn;
+            workDay.Description=workDayDto.Description;
+            
+            _unitOfWork.Repository<WorkDay>().Update(workDay);
+
+            var result = await _unitOfWork.Complete();
+
+            if (result <= 0) return BadRequest(new ApiResponse(400, "Problem updating workDay"));
+
+            return Ok(workDay);
+        }
     }
 }
