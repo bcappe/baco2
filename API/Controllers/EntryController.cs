@@ -11,20 +11,13 @@ namespace API.Controllers
     public class WorkDayController : BaseApiController
     {
 
-        private readonly IGenericRepository<WorkDay> _workDayRepo;
-        private readonly IGenericRepository<Employee> _employeeRepo;
         private readonly IUnitOfWork _unitOfWork;
 
         public WorkDayController(
-                                IUnitOfWork unitOfWork,
-                                IGenericRepository<WorkDay> workDayRepo,
-                                IGenericRepository<Employee> employeeRepo
+                                IUnitOfWork unitOfWork
                                )
         {
             _unitOfWork = unitOfWork;
-            _workDayRepo=workDayRepo;
-            _employeeRepo=employeeRepo;
-            
         }
 
         [HttpPost]
@@ -33,7 +26,7 @@ namespace API.Controllers
             var parmsEmployee = new EmployeeSpecParams();
             parmsEmployee.Rfid=createEntry.Rfid;
             var specEmplo = new EmployeesWithWorkScheduleSpecification(parmsEmployee);
-            var employee = await _employeeRepo.GetEntityWithSpec(specEmplo);
+            var employee = await _unitOfWork.Repository<Employee>().GetEntityWithSpec(specEmplo);
             if(employee is null)
                 return BadRequest();
             var parmsWorkDay= new WorkDaySpecParams();
@@ -41,7 +34,7 @@ namespace API.Controllers
             parmsWorkDay.EmployeeID = employee.Id;
 
             var specDay = new WorkDaySpecification(parmsWorkDay);
-            var workDay = await _workDayRepo.GetEntityWithSpec(specDay);
+            var workDay  = await _unitOfWork.Repository<WorkDay>().GetEntityWithSpec(specDay);
 
             if(workDay is null)
             {
