@@ -64,7 +64,7 @@ namespace API.Controllers
         {
             var workDayScheduleUpdate = await _unitOfWork.Repository<WorkDaySchedule>().GetByIdAsync(id);
             if (workDayScheduleUpdate == null) return NotFound(new ApiResponse(404));
-            _mapper.Map<WorkDayScheduleDto,WorkDaySchedule>(workDaySchedule);       
+            _mapper.Map(workDaySchedule, workDayScheduleUpdate);     
             _unitOfWork.Repository<WorkDaySchedule>().Update(workDayScheduleUpdate);
 
             var result = await _unitOfWork.Complete();
