@@ -1,5 +1,6 @@
 using API.Dtos;
 using API.Erros;
+using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
@@ -11,20 +12,17 @@ namespace API.Controllers
     public class WorkDayController : BaseApiController
     {
 
-        private readonly IGenericRepository<WorkDay> _workDayRepo;
-        private readonly IGenericRepository<Employee> _employeeRepo;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
+
 
         public WorkDayController(
                                 IUnitOfWork unitOfWork,
-                                IGenericRepository<WorkDay> workDayRepo,
-                                IGenericRepository<Employee> employeeRepo
+                                IMapper mapper
                                )
         {
             _unitOfWork = unitOfWork;
-            _workDayRepo=workDayRepo;
-            _employeeRepo=employeeRepo;
-            
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -33,7 +31,7 @@ namespace API.Controllers
             var parmsEmployee = new EmployeeSpecParams();
             parmsEmployee.Rfid=createEntry.Rfid;
             var specEmplo = new EmployeesWithWorkScheduleSpecification(parmsEmployee);
-            var employee = await _employeeRepo.GetEntityWithSpec(specEmplo);
+            var employee = await _unitOfWork.Repository<Employee>().GetEntityWithSpec(specEmplo);
             if(employee is null)
                 return BadRequest();
             var parmsWorkDay= new WorkDaySpecParams();
@@ -41,7 +39,7 @@ namespace API.Controllers
             parmsWorkDay.EmployeeID = employee.Id;
 
             var specDay = new WorkDaySpecification(parmsWorkDay);
-            var workDay = await _workDayRepo.GetEntityWithSpec(specDay);
+            var workDay  = await _unitOfWork.Repository<WorkDay>().GetEntityWithSpec(specDay);
 
             if(workDay is null)
             {
@@ -111,13 +109,9 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<WorkDay>> UpdateProduct(int id, WorkDayDto workDayDto)
         {
-            var workDay = await _unitOfWork.Repository<WorkDay>().GetByIdAsync(id);
-            //TODO: nice to have--> automapper
-            workDay.CheckIn=workDayDto.CheckIn;
-            workDay.CheckOut=workDayDto.CheckOut;
-            workDay.LunchTimeIn=workDayDto.LunchTimeIn;
-            workDay.Description=workDayDto.Description;
-            
+            var workDay = await _unitOfWork.Repository<WorkDay>().GetByIdAsync(id);     
+            _mapper.Map(workDayDto, workDay);  
+                        
             _unitOfWork.Repository<WorkDay>().Update(workDay);
 
             var result = await _unitOfWork.Complete();

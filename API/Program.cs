@@ -1,5 +1,7 @@
 using API.Extensions;
+using API.Helpers;
 using API.Middleware;
+using AutoMapper;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+var config = new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new MappingProfiles());
+});
+var mapper = config.CreateMapper();
+builder.Services.AddSingleton(mapper);
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddApplicationServices(); //Olhar extensions file 
 builder.Services.AddControllers();
