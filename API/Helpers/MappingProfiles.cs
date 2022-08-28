@@ -14,6 +14,7 @@ namespace API.Helpers
         {
             CreateMap<WorkDayScheduleDto,WorkDaySchedule>().ForMember(x => x.Id, x => x.Ignore());
             CreateMap<WorkDayDto,WorkDay>().ForMember(x => x.Id, x => x.Ignore());
+            CreateMap<EmployeeDto,Employee>().ForMember(x => x.Id, x => x.Ignore());
         }
     }
 }

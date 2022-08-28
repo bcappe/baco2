@@ -60,7 +60,7 @@ namespace API.Controllers
             return Ok();
         }
         [HttpPut("{id}")]
-        public async Task<ActionResult<WorkDay>> UpdateWorkSchedule(int id, WorkDayScheduleDto workDaySchedule)
+        public async Task<ActionResult<WorkDaySchedule>> UpdateWorkSchedule(int id, WorkDayScheduleDto workDaySchedule)
         {
             var workDayScheduleUpdate = await _unitOfWork.Repository<WorkDaySchedule>().GetByIdAsync(id);
             if (workDayScheduleUpdate == null) return NotFound(new ApiResponse(404));
@@ -74,7 +74,7 @@ namespace API.Controllers
             return Ok(workDayScheduleUpdate);
         }
          [HttpPost]
-        public async Task<ActionResult<WorkDay>> AddWorkSchedule(WorkDayScheduleDto createWorkDaySchedule)
+        public async Task<ActionResult<WorkDaySchedule>> AddWorkSchedule(WorkDayScheduleDto createWorkDaySchedule)
         {
             
 
