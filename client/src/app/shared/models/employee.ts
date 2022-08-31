@@ -1,9 +1,12 @@
 export interface IEmployee {
     id: number;
     name: string;
-    description: string;
-    pictureUrl: string;
-    price: number;
-    productType: string;
-    productBrand: string;
+    jobTitle: string;
+    department: string;
+    jobContractType: string;
+    startedIn: string;
+    fingerPrintUrl :string  
+    rfidCode:string
+    workDaySchedule:string
+    workDayScheduleId:string
   }
