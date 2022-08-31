@@ -26,6 +26,13 @@ builder.Services.AddDbContext<StoreContext>(x =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+                });
+            });
 var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>(); //deixa a resposta de erro bonitinha (olhar a pasta Middleware)
 // Configure the HTTP request pipeline.
@@ -38,6 +45,7 @@ app.UseStatusCodePagesWithReExecute("/errors/{0}");
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseStaticFiles();
+app.UseCors("CorsPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
