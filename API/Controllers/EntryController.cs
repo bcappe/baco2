@@ -51,9 +51,9 @@ namespace API.Controllers
             }
             else if(!createEntry.IsIn)
             {
-                if(!workDay.LunchTimeOut.HasValue)
+                if(!workDay.LunchTimeIn.HasValue)
                 {
-                    workDay.LunchTimeOut=createEntry.TimeStamp;
+                    workDay.LunchTimeIn=createEntry.TimeStamp;
                     _unitOfWork.Repository<WorkDay>().Update(workDay);    
                 }
                 else
@@ -64,7 +64,7 @@ namespace API.Controllers
             }
             else
             {
-                workDay.LunchTimeIn=createEntry.TimeStamp;
+                workDay.LunchTimeOut=createEntry.TimeStamp;
                 _unitOfWork.Repository<WorkDay>().Update(workDay);
                 
             }
